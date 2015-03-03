@@ -56,7 +56,6 @@
         mainCode = '';
         each(source.split(openTag),function(str){
             str = str.split(closeTag);
-            //console.log(str);
             if(str.length > 1){
                 //logic + html
                 mainCode += logic(str[0]);
@@ -64,7 +63,6 @@
             }else{
                 //html
                 mainCode += html(str[0]);
-                //console.log(mainCode);
             }
         });
 
@@ -78,14 +76,12 @@
     }
 
     function logic(code){
-        //console.log(code);
         if(code.indexOf('=') === 0){
             // case:<%=name; %>
             code = code.replace(/^=|[\s;]*$/g,'');
 
             code = "$out+=" + code + ";\n";
         }
-        //console.log(code);
         each(getVariable(code),function(name){
             if(!name || variableModule[name]){
                 return;
@@ -180,7 +176,6 @@
     }
 
     function errorInfo(e){
-        return;
         var message = 'Template Error\n\n';
 
         for(var name in e){
