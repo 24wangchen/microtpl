@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>basic-demo</title>
+		<link rel="stylesheet" href="qunit/qunit.css">
+		<script src="qunit/qunit.js"></script>
+		<script src='../src/template.js'></script>
+		<script type="text/html" id="simple">
+			<h2>My name is <%=name%>, I am <%=age%></h2>
+		</script>
+		<script type="text/html" id="syntax">
+			<%for(var i = 0; i < company.length; i++ ) {%><%=company[i]%>,<%}%>
+		</script>
+	</head>
+	<body>
+		<div id="qunit"></div>
+		<div id="qunit-fixture">test markup</div>
+	</body>
+	<script>
+		var simpleData = {
+			name : 'Michael',
+			age  : '27'
+		};
+
+
+		var syntaxData = {
+			company : ['baidu','tencent','taobao']
+		};
+
+		test('基本', function () {
+			equal(template('simple', {name:'Michael',age:'27'}), '<h2>My name is Michael, I am 27</h2>', '原文输出');
+			equal(template('syntax', {company:['baidu','tencent','taobao']}), 'baidu,tencent,taobao,', '带有语法的输出');
+		});
+
+	</script>
+</html>
