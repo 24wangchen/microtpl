@@ -3,7 +3,6 @@
     var toString = ({}).toString;
     var cacheModule = [];
     var variableModule = {$out:1};
-    console.log(123);
 
     var defaultConfig = template.defaultConfig = {
         openTag  : '<%',
